@@ -1389,3 +1389,15 @@ index 4cfc16c03..0bbc208c0 100644
      (!defined(__has_include) || GTEST_INTERNAL_HAS_INCLUDE(<version>))
  #include <version>  // C++20 and later
  #elif (!defined(__has_include) || GTEST_INTERNAL_HAS_INCLUDE(<ciso646>))
+--
+--- a/ssl/ssl_test.cc
++++ b/ssl/ssl_test.cc
+@@ -5198,7 +5198,7 @@
+   std::vector<CRYPTO_BUFFER *> certs = {leaf1.get(), ca1.get()};
+   ASSERT_TRUE(SSL_CTX_set_chain_and_key(ctx.get(), certs.data(), certs.size(),
+                                         key1.get(), nullptr));
+-  certs = {leaf2.get()};
++  certs = {leaf2.get(), ca1.get()};
+   ASSERT_TRUE(SSL_CTX_set_chain_and_key(ctx.get(), certs.data(), certs.size(),
+                                         key2.get(), nullptr));
+ 
